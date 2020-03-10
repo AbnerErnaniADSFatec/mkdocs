@@ -21,7 +21,7 @@ _ docs
 |_ mkdocs.yml
 ```
 
-As alterações em relação ao comportamento do site devem ser descritas no arquivo [`mkdocs.yml`](./mkdocs.yml), mais configurações como tema e css podem ser encontradas na própria documentação do [MkDocs](https://www.mkdocs.org/):
+As alterações em relação ao comportamento do site devem ser descritas no arquivo [`mkdocs.yml`](./mkdocs.yml), mais configurações como tema e css podem ser encontradas na própria documentação do [MkDocs](https://www.mkdocs.org/user-guide/configuration/#edit_uri):
 ~~~yml
 site_name: WTSS Spec
 repo_url: https://github.com/AbnerErnaniADSFatec/mkdocs
