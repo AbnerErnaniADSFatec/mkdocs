@@ -1,0 +1,4 @@
+site_name: WTSS Spec
+repo_url: https://github.com/AbnerErnaniADSFatec/mkdocs
+nav:
+  - Home: index.md
