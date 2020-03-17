@@ -30,7 +30,7 @@ nav:
 ~~~
 O `repo_url` referencia um repositório do Github para a edição do documento markdown e para criação de pull requests.
 
-## Execução da versão itenrativa
+## Execução da versão iterativa
 Localizar no endereço `localhost:8000`
 ~~~shell
 $ mkdocs serve
