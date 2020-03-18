@@ -1,29 +1,43 @@
-# Continuous Integration with Jenkins
+# MkDocs
+Testando a geração de documentação para códigos em markdown com o gerador de sites Python [MkDocs](https://www.mkdocs.org/).
 
-The CI workflow is available in [`CI - Workflow`](https://drive.google.com/file/d/1QgSeMcNRph6ORE6kDDf_qazYtntqYpKb/view)
+## Instalação rápida do MkDocs
+~~~shell
+# pip install --upgrade pip
+~~~
+~~~shell
+# pip install mkdocs
+~~~
 
-We have prepared [`Jenkinsfile`](./Jenkinsfile) containing entire workflow of Brazil Data Cube - Web Time Series Service (WTSS) to represent mainly the integration with GitHub.
+## Criando um novo projeto
+~~~shell
+$ mkdocs new DOCS
+~~~
 
-## Jenkinsfile
+O mkdocs deve criar uma estrutura de pastas simples como descrita abaixo:
+```
+_ docs
+  |_ index.md
+|_ mkdocs.yml
+```
 
-The Jenkinsfile is composed by five six steps that must be strictly followed in order to keep the funcionalities working as expected.
-These steps are defined as:
+As alterações em relação ao comportamento do site devem ser descritas no arquivo [`mkdocs.yml`](./mkdocs.yml), mais configurações como tema e css podem ser encontradas na própria documentação do [MkDocs](https://www.mkdocs.org/user-guide/configuration/#edit_uri):
+~~~yml
+site_name: WTSS Spec
+repo_url: https://github.com/AbnerErnaniADSFatec/mkdocs
+nav:
+  - Home: index.md
+~~~
+O `repo_url` referencia um repositório do Github para a edição do documento markdown e para criação de pull requests.
 
-* **prepare environment** which it builds Dockerfile and install Python package dependencies defined in [`requirements.txt`](./requirements.txt). After that, the create image will be used to run the other steps.
+## Execução da versão iterativa
+Localizar no endereço `localhost:8000`
+~~~shell
+$ mkdocs serve
+~~~
 
-* **code-check** Perform static and semantic analysis code to guarantee code quality. The Jenkinsfile is configured to mark build as:
-    - `unstable` for any *warning* found with high severity.
-    - `failed` when a potential error found.
-    - `success` when no entry is found.
-
-* **generate docs** Generate project documentation using `readthedocs` framework. We will provide doc URI in order to Reviewer check before merge.
-
-* **unittest** Run project unittesting on folder `tests`.
-
-* **deploy** Deploy application to respective server context. For Pull Request Integration, the application is deployed to the development server to act like production environment. Once configured, the repository reviewer will check through link available in Pull Request Comment.
-
-When an error occurrs, there is a special handler which will cleanup the built docker images. We also defined integration with `Slack Channel` that will notify the team developers about repository interaction.
-
-### Production
-
-TODO
+## Montando o site HTML e CSS
+Executar o comando abaixo para a geração do site com documentos HTML e CSS formatados como na versão iterativa.
+~~~shell
+$ mkdocs build
+~~~
